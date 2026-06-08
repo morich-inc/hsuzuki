@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鈴木啓友 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>鈴木啓友 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. 株式会社ポピンズシッター</a>
+  <a href="#k2">2. 株式会社じげん</a>
+  <a href="#k3">3. 株式会社ファイアーキッズ</a>
+  <a href="#k4">4. 株式会社トーガシ</a>
+  <a href="#k5">5. 株式会社AGE technologies</a>
+  <a href="#k6">6. 株式会社イマクリエ</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">バックオフィス責任者</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社ポピンズシッター</div>
+  <div class="co-url"><a href="https://smartsitter.jp/" target="_blank">https://smartsitter.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都渋谷区広尾5-6-6 広尾プラザ6F</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>東証上場・全国約340の保育施設を展開するポピンズグループの一員として、ベビーシッターサービス「ポピンズシッター」を運営</li><li>保育業界で培った豊富なノウハウとブランド力を基盤に、IT・AIを活用したオペレーション高度化を推進し、品質・安全性を強みに事業成長を続けています</li><li>創業以来増収増益を継続し、マッチング型ベビーシッターサービス領域で業界トップクラスの規模へ拡大</li><li>組織は30代中心で、多様なバックグラウンドを持つメンバーが在籍</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2014年にスマートシッター株式会社として創業され、2017年2月にはポピンズグループ入りを果たし、ポピンズシッターとして新たなスタートを切った注目企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2014年にスマートシッター株式会社として創業され、2017年2月にはポピンズグループ入りを果たし、ポピンズシッターとして新たなスタートを切った注目企業です。創業から約10年で日本のベビーシッター業界の変革をリードし、「一昔前は富裕層向けのイメージが強かったベビーシッター」を一般家庭に普及させることに成功。現在では業界シェアトップクラスまで急成長を遂げています。2025年4月には保育料改定を実施し、さらなるサービス向上を目指しており、国や自治体からの補助金制度充実により利用ニーズが急増する追い風の中で事業拡大を続けています。</p><p>同社のミッションは「子育ての『はじめて』を応援する」こと。保育業界で30年以上の実績を誇るポピンズグループのノウハウを活用し、安心・安全とスマホで選べる利便性を両立した革新的なサービスを展開。2018年から2020年まで3年連続でキッズデザイン賞を受賞し、日経DUALでは「マッチング型ベビーシッターサービス」ランキング1位を獲得するなど、その品質の高さが認められています。</p><p>働く環境も魅力的で、社員25名＋外部メンバー30名程の規模で、30代社員と30〜40代の子育てママを中心とした「利他的で人の役に立つことに喜びを感じる優しい社員」が集まっています。月平均残業時間は10時間前後と少なく、ベビーシッター利用の福利厚生も充実。「失敗を恐れない」「データドリブン」「フラット×スピード」の3つのカルチャーの下、1→10のフェーズで自由度が高く、自分で仕事の範囲を会社経営に近いところまで広げることができる成長機会に満ちた環境です。この会社では、日本の子育て環境を変える社会的インパクトの大きな仕事に携われる貴重な経験を得ることができます。</p><p><strong>代表取締役　田村篤司氏</strong><br>楽天グループでの豊富な経験を持つ敏腕経営者。2002年にシティバンクでキャリアをスタートし、日興シティグループ証券、PwCコンサルティング（旧ブーズ・アンド・カンパニー）を経て、2012年に楽天に入社。楽天リサーチ（現楽天インサイト）では執行役員から取締役副社長、さらに代表取締役社長まで歴任し、企業の成長を牽引。2023年には楽天モバイルの取締役副社長COO兼CCOとして重責を担い、2024年4月にポピンズグループに参画。データドリブンな経営手法と事業戦略のプロフェッショナルとして、ポピンズシッターのさらなる成長を目指しています。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 バックオフィス責任者</div>
+          <div class="job-preview">バックオフィス全般を俯瞰し、経理・人事・総務を横断的にリードする責任者</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>ポピンズシッターとは</strong><br>弊社は、厳正な面接・研修を経て契約したベビーシッターと、子育て家庭を繋げる、ベビーシッターマッチングサービスを運営しています。少子高齢化が進む一方で共働き世帯の増加に伴い、ベビーシッター業界の市場規模は、市場規模は2020年からの10年間で約2倍となる1,000億円に達すると推定されています。近年は国や自治体による補助金制度が整備され、格安でベビーシッターを利用できる環境が広がったことで、注目度と需要は急速に高まっています。</p><p><strong>サービスの特徴</strong></p><ul><li>入会金&月額&年会費無料</li><li>スマホで自分に合ったシッターを選んで簡単予約</li><li>最短30分から依頼が可能</li><li>シッターは保育士、幼稚園教諭、看護師などの有資格者を中心に保育・子育て経験者のみ</li><li>全国保育サービス協会加盟事業者で安心</li></ul><p><strong>仕事内容</strong><br>バックオフィス全般を俯瞰し、経理・人事・総務といった領域を横断的にリードできる方を募集しています。売上規模急拡大に合わせて管理体制の見直しをする時期となり、部門横断で仕組み化や改善を推進し、内部統制・ガバナンスを意識した運営ができる組織をメインで作っていきただくポジションです。</p><p><strong>具体的な業務</strong></p><ul><li>他部門と連携した仕組み化推進と業務仕分け</li><li>経理・人事・事務各領域における業務フローの構築</li><li>ベビーシッターサービス事業者としての規約・契約等の見直しと整備</li><li>内部統制の要点を押さえた業務フローや管理チェック体制の構築、および開発部門との連携</li><li>バックオフィス観点での組織課題・リスクの可視化</li><li>親会社との連携によるガバナンス統制</li><li>メンバーマネジメント（4-5名の正社員）</li><li>その他関連する業務</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>100名未満の企業におけるバックオフィス全体のマネジメント経験（業種不問）</li><li>会計数字と経営数字の橋渡しをされた経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>会計監査や内部統制（JSOX含む）への関与経験</li><li>開発部門と協働して業務フローを整理した経験</li><li>業務プロセスの改善や業務のDX化をリードした経験</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可（条件あり）</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://smartsitter.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k2"><div class="card-inner">
+  <div class="badges"><span class="badge">経営管理部長候補</span><span class="badge badge-blue">東証プライム</span></div>
+  <div class="co-name">株式会社じげん</div>
+  <div class="co-url"><a href="https://zigexn.co.jp/" target="_blank">https://zigexn.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区虎ノ門3-4-8</td></tr><tr><th>上場区分</th><td>東証プライム</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>役員リレーション</li><li>過去入社実績アリ</li><li>カジュアル面談スタート可</li><li>CEO平尾様はリクルート出身、マーケティングに強みを持つ経営者</li><li>業績は2023年3月期は過去最高益を達成し安定性の高い企業</li><li>プライム上場の安定した経営資源と、ベンチャー企業のスピード感・裁量権を併せ持っています</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">「生活機会（より良く生きるための選択肢）の最大化」をミッションに掲げ、独自のビジネスモデルで成長を続けている企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>「生活機会（より良く生きるための選択肢）の最大化」をミッションに掲げ、独自のビジネスモデルで成長を続けている企業です。2018年6月には東証一部（現：プライム市場）へ市場変更を果たし、2019年の創業以来、14期連続で増収増益を実現。2024年3月期には過去最高の連結売上収益を記録し、従業員数も900名を超えるなど、着実に規模を拡大しています。</p><p>求人、不動産（賃貸・売買・リフォーム）、自動車、旅行など、40以上の領域でメディア・サービスを展開。また、2013年のマザーズ上場以降、領域を限定せず、さまざまな事業や周辺サービスへのM&Aも継続的に行っています。取り組んでいるのは、「情報の非対称性（情報を届けたい人と、それを必要とする人がうまく出会えない問題）」の解消です。膨大な情報があふれる中から必要な情報を見つけやすく整理・再構築し、ユーザー一人ひとりに合わせて届けることで、最良の意思決定を後押しする「場」をつくっています。</p><p>現在は、（1）M&A、（2）大手企業とのアライアンス、（3）新規事業の立ち上げといったテーマで、スピード感をもって多角的に事業を展開中。近年では、国内旅行B2B市場で圧倒的なシェアを持つ「アップルワールド」を中核に、シンガポール企業の買収などを通じて、クロスボーダーでの展開を加速。また、HR領域においても、ホワイトカラー向けに加え、薬剤師紹介などエッセンシャルワーカー領域のM&Aを積極的に進めています。</p><p>特徴的なのは、ベンチャーのスピード感を持ちながら、プライム上場企業としての資本力、そして投資ファンドのような冷静な事業目利き力を併せ持っている点です。</p><p><strong>CEO平尾 丈氏</strong><br>1982年、東京都生まれ。2005年、慶應義塾大学環境情報学部卒業。東京都中小企業振興公社主催、学生起業家選手権で優秀賞受賞。大学在学中に2社を創業し、1社を経営したまま、2005年、株式会社リクルートに入社。新人として参加した、新規事業コンテスト「New RING」で複数入賞。インターネットマーケティング局にて、「New Value Creation」を受賞。2006年、株式会社じげんの前身となる企業を設立し、23歳で取締役となる。25歳で代表取締役社長に就任、27歳でMBOを経て独立。2013年、30歳で東証マザーズ(当時)上場、2018年には35歳で東証一部へ市場変更し、2022年にプライム市場へ移行。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 【アップルワールド出向】経営管理部長候補</div>
+          <div class="job-preview">グループ会社アップルワールドにて経営管理体制を統括し、事業成長を加速させる責任者</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>募集概要</strong><br>東証プライム上場インターネット企業として事業、組織ともに急成長している当社。グループ会社であるアップルワールド社は、1991年の創業から個人旅行に特化したホテル予約のスペシャリストとして事業を展開し、世界中のランドオペレーターからホテル情報を収集・整理し、国内を中心とする旅行会社3,000社や提携企業、個人ユーザーに対して提供するランドオペレーターアグリーゲーターの地位を業界最大規模で築いています。</p><p>経営層のパートナーとして全社の経営戦略に基づき、経理財務を主軸に決算業務や財務管理を実行、経営管理体制（経理・財務、人事・労務、法務、総務など）を統括し、事業成長を加速させるための強固なガバナンスと組織基盤を構築・運用する経営管理部長候補を募集します。</p><p><strong>仕事内容</strong><br>経理財務業務を中心に人事労務、法務、総務等、全社のコーポレート機能を統括するチームを牽引して頂きます。経営層と密に連携を取りながらじげん社と連携してコーポレート全体をマネジメントしていただき、事業成長を下支えする組織基盤形成をリードしていただきます。</p><p><strong>具体的な業務内容</strong></p><ul><li>経理業務全般</li><li>決算対応（月次/四半期/年次）</li><li>親会社へのレポーティング業務</li><li>税務申告</li><li>税理士対応</li></ul><p><strong>その他お任せしたい業務</strong></p><ul><li>予算管理</li><li>会計システムの選定 導入</li><li>J－SOX対応</li><li>監査法人対応</li><li>人事労務に関連する業務</li><li>経理を含むコーポレート部門のマネジメント など</li></ul><p><strong>応募資格</strong></p><p><span class='tag tag-must'>MUST</span></p><ul><li>経理財務について一定の知識、経験</li><li>コーポレート部門での複数領域でのご経験(法務、労務など)</li><li>チームマネジメントのご経験</li></ul><p><span class='tag tag-want'>WANT</span></p><ul><li>コーポレート全般の管理経験</li><li>部門立ち上げ経験</li><li>法務や人事労務などでのオペレーション経験</li><li>海外経理のご対応経験</li><li>PMI経験</li></ul>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://zigexn.co.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k3"><div class="card-inner">
+  <div class="badges"><span class="badge">管理部長</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社ファイアーキッズ</div>
+  <div class="co-url"><a href="https://recruit.firekids.jp/" target="_blank">https://recruit.firekids.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区新橋1丁目10−9 タカセビル2階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1995年創業のヴィンテージ時計専門店です。横浜・白楽のわずか3坪の店舗からスタートし、現在ではヴィンテージ時計市場を牽引するリーディングカンパニーへと成長しています。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1995年創業のヴィンテージ時計専門店です。横浜・白楽のわずか3坪の店舗からスタートし、現在ではヴィンテージ時計市場を牽引するリーディングカンパニーへと成長しています。2025年8月に実施された市場調査では、ヴィンテージ時計専門店として「年間売上」「年間販売本数」「店頭在庫数」のすべてで日本No.1を達成し、業界初の　三冠　を獲得しています。</p><p>同社にとって大きな転機となったのは2022年。株式会社ビズリーチ創業メンバーとして知られる佐藤和男氏が、事業承継により二代目オーナー兼代表取締役に就任しました。佐藤代表のもと、「再現性のある事業グロース手法」を徹底的に実行。就任からわずか3年9ヶ月で、月商800万円から2.7億円へと約33倍の成長を遂げています。</p><p>マーケティングへの投資も積極的で、2023〜2024年には年間1億円以上を投下。SNSのフォロワー数は中古時計店の中でもトップクラスを誇ります。さらに、ビジネス番組「REAL VALUE」のプラチナスポンサー、堀江貴文氏プロデュースのミュージカルや格闘技イベント「ブレイキングダウン」への協賛など、業界の枠を超えた大胆な露出戦略により、ブランド認知を急速に拡大しています。</p><p><strong>代表取締役　佐藤 和男氏</strong><br>1977年⽣まれ。早稲⽥⼤学法学部卒、シンガポール国⽴⼤学経営学修⼠（MBA）。2008年より株式会社ビズリーチに創業メンバーとして参画。14年在籍し、ビズリーチ事業・海外事業・⼦会社の事業⽴ち上げや、⼈事企画・⼈材組織開発部⾨など各種部⾨の責任者を歴任する。2021年、時価総額約1700億円で東京証券取引所に上場。ゼロから会社を⽴ち上げてユニコーン企業を作る稀有な経験をする。2022年、1995年創業のヴィンテージ時計専⾨店「ファイアーキッズ」を事業承継し、代表取締役に就任。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 管理部長（バックオフィス責任者）</div>
+          <div class="job-preview">経理や人事、組織活性化を統括するバックオフィス責任者</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p>現在の管理部長は31歳と若くマネジメント経験がないため、経理や人事、組織活性化を統括できる「管理部長レイヤー」の人材を探しています。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://recruit.firekids.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k4"><div class="card-inner">
+  <div class="badges"><span class="badge">管理部門オープンポジション</span><span class="badge badge-blue">未上場（N-4以前）</span></div>
+  <div class="co-name">株式会社トーガシ</div>
+  <div class="co-url"><a href="https://www.tohgashi.co.jp" target="_blank">https://www.tohgashi.co.jp</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都中央区新富2-14-4　住友新富ビル 2F</td></tr><tr><th>上場区分</th><td>未上場（N-4以前）</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    管理部門強化により上場準備を推進する総合イベントプロデュース企業
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">1965年に創業し、2000年に法人化された会社です。展示会やイベントの企画から設計、施工、そして運営までをすべて自社で手がけている、まさに"総合イベントプロデュース企業"と呼べる存在です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>1965年に創業し、2000年に法人化された会社です。展示会やイベントの企画から設計、施工、そして運営までをすべて自社で手がけている、まさに"総合イベントプロデュース企業"と呼べる存在です。年間3,000件以上のイベントを手がけていて、2025年1月期末には売上高67億円（23年60億➡24年63億円）を達成。その実績からも、堅実かつ着実に成長を続けている様子が伺えます。</p><p>特に注目したいのが、企画から運営までをワンストップで提供できる体制。社内には多くの専門職の方が在籍していて、各職種が密に連携しながらイベントを形にしていく力が、トーガシの大きな強みになっています。<br>たとえば、Web3業界の注目イベント「WebX」や、参加者4万人を超えるビジネスカンファレンス「Climbers 2025」といった大型案件にも関わっており、その実績からも、業界内での評価の高さが感じられます。（就職イベントはほぼ独占）</p><p>現在、今後の株式上場（IPO、現在N-3）を視野に入れながら、社内の管理体制をより一層強化していこうとされています。その中でも、新規事業部門（成長戦略推進室）、経理部門、情報システム部門については、今後の体制づくりに向けて人員の強化が大きなテーマとなっています。</p><p><strong>代表取締役　吉田守克氏</strong><br>1982年に三井物産株式会社へご入社以来、国内外の事業投資や開発を手がけてこられた。情報産業分野では海外スタートアップとのジョイントベンチャー設立に携わるなど、先進的な取り組みに多く関わってこられました。<br>その後、2006年にトーガシへ参画。以来、長く続くイベント施工会社を、単なる"作る会社"から"戦略的にプロデュースする会社"へと変えていく大きな改革をリードされています。<br>最近では、Web3、NFT、バーチャル空間といった新しい技術領域にも積極的に挑戦されており、「展示・イベントの在り方そのものを変えていく」という強いビジョンのもと、これまでの業界常識にとらわれない柔軟かつ革新的な経営スタイルを貫いていらっしゃいます。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 管理部門オープンポジション</div>
+          <div class="job-preview">ご経験や適性に応じて、管理部門の幅広いポジションから最適なポジションを提案</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容：</strong><br>管理部門において幅広く採用ニーズがございます。ご経験や適性に応じて、ご経験を活かしていただけそうなポジションを提案させていただきます。</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.tohgashi.co.jp" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+
+<div class="card" id="k5"><div class="card-inner">
+  <div class="badges"><span class="badge">コーポレート部長</span><span class="badge badge-blue">未上場（シリーズB）</span></div>
+  <div class="co-name">株式会社AGE technologies</div>
+  <div class="co-url"><a href="https://age-technologies.co.jp/" target="_blank">https://age-technologies.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都新宿区大久保1-2-1 天翔東新宿ビル901</td></tr><tr><th>設立</th><td>2018年3月</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>50兆円市場の"相続インフラ"を創るAgeTech最前線<br>超高齢社会を背景に、相続DX・資産承継・不動産・保険・金融まで横断する事業展開。未成熟な巨大市場で"新しい社会インフラ"を構築する挑戦。</li><li>PMF後の急成長フェーズで、事業をつくる経験<br>累計利用者5万人突破、Web相続サービス利用者数No.1、シリーズBで5.9億円調達済み。IPOを視野に、事業モデル・提携戦略・組織づくりまで深く関われる拡大フェーズ。</li><li>少数精鋭だからこそ得られる大きな裁量と成長機会<br>20名規模のフラットな組織体制、服装・髪型自由のカルチャー、一人ひとりが主体的に事業へ関わる環境。AgeTechや相続DXは、まだ勝ち筋が決まり切っていない新領域。新市場を切り拓く事業責任と社会課題解決の実感を得られるフェーズ。</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">2018年3月設立、「資産と想いを次世代につなぎ、日本の可能性をひらいていく」をミッションに掲げ、日本の超高齢社会という巨大な社会課題にテクノロジーで挑むAgeTechスタートアップ。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>2018年3月設立、「資産と想いを次世代につなぎ、日本の可能性をひらいていく」をミッションに掲げ、日本の超高齢社会という巨大な社会課題にテクノロジーで挑むAgeTechスタートアップ。<br>これまで本格的なDX化が進んでこなかった相続領域へ参入し、相続手続きプラットフォーム「そうぞくドットコム」を展開。戸籍収集、書類作成、金融機関・法務局対応など煩雑な相続手続きをオンライン完結型へ変革し、累計利用者数5万人突破、「相続手続きWebサービス利用者数No.1」を獲得するまでに成長。さらに、不動産売却支援、保険活用、ファイナンスサービスなど50兆円規模とも言われる相続財産マーケット全体へ事業領域を拡大中。</p><p>2023年にはシリーズBラウンドで総額5.9億円の資金調達を実施し、KUSABI、DGベンチャーズ、三菱UFJ信託銀行など有力投資家が参画。IPOも視野に入れながら、相続を単なる"手続き"ではなく、"資産と想いを未来へつなぐ社会インフラ"へ進化させる挑戦を続ける成長企業。</p><p>2023年4月にはシリーズBラウンドで総額5.9億円の資金調達を実施しました。</p><p><strong>代表取締役CEO　塩原 優太氏</strong><br>新卒でIT広告代理店のオプトに入社、Web広告の運用実務を経験。その後アプリ開発を行うスタートアップを経て、中小企業の相続・事業承継に特化したコンサルティング企業へ入社。拡大する超高齢社会に起こる課題の大きさを感じ、2018年、マーク・オン（旧社名）を創業。2021年、AGE technologiesへ社名変更。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 コーポレート部長（管理部長）</div>
+          <div class="job-preview">IPOを視野に入れた成長フェーズにおいて、コーポレート部門全体を統括</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>仕事概要</strong><br>IPOを視野に入れた成長フェーズにおいて、コーポレート部門全体を統括していただきます。人事・労務・総務・経理財務の各機能を横断的にマネジメントしながら、上場準備に必要な社内体制の整備と業務プロセスの高度化を推進するリーダーポジションです。<br>各種専門家（税理士・社労士・弁護士等）との連携はもちろん、経営陣への報告・意思決定支援も担っていただきます。</p><p><strong>【具体的な業務内容】</strong></p><p><strong>① 人事・労務管理</strong><br>・採用戦略の立案および採用業務の統括（要件定義・スカウト・選考・オファー）<br>・組織設計・人員計画・評価制度の構築・運用<br>・労務管理体制の整備（就業規則・社内規程の策定・改定）<br>・勤怠管理・給与計算・社会保険手続きの監督<br>・社労士・弁護士等の外部専門家との連携・管理</p><p><strong>② 総務・経理財務管理</strong><br>・経理財務業務の統括（月次・年次決算、資金管理、税務申告対応）<br>・総務全般（オフィス管理・備品管理・契約書管理・情報セキュリティ対応）<br>・税理士・会計士等の外部専門家との連携・管理<br>・法務対応（契約書レビュー・リーガルリスク管理）</p><p><strong>③ IPO準備・内部管理体制の構築</strong><br>・上場審査に対応した内部管理体制・内部統制の整備<br>・監査法人、主幹事証券、IPOアドバイザーとの折衝・調整<br>・各種開示書類の作成サポート（Sスケジュール・Dスケジュール対応）<br>・コンプライアンス体制、リスク管理フレームワークの構築</p><p><strong>④ マネジメント・組織横断業務</strong><br>・コーポレート部門のチームビルディングおよびメンバー育成<br>・経営陣へのレポーティング・意思決定支援<br>・各事業部との連携によるバックオフィス業務の効率化推進<br>・オフィス移転・ISMS対応・補助金申請などのプロジェクト統括</p><p><strong>必須スキル</strong></p><ul><li><span class='tag tag-must'>MUST</span> 人事/労務/総務/経理財務のうち複数領域における実務経験5年以上</li><li><span class='tag tag-must'>MUST</span> IPO（新規上場）準備の実務経験（主幹事証券・監査法人対応を含む）</li><li><span class='tag tag-must'>MUST</span> チームマネジメント経験（直接報告メンバーの育成・評価経験）</li><li><span class='tag tag-must'>MUST</span> 各種外部専門家（税理士・社労士・弁護士等）との折衝・管理経験</li></ul><p><strong>歓迎スキル</strong></p><ul><li><span class='tag tag-want'>WANT</span> スタートアップ、ベンチャー企業でのコーポレート管理職経験</li><li><span class='tag tag-want'>WANT</span> グロースフェーズ（シリーズB以降）での組織拡大・制度整備の経験</li><li><span class='tag tag-want'>WANT</span> 公認会計士、税理士、社会保険労務士などの保有資格</li><li><span class='tag tag-want'>WANT</span> SaaSツールを活用したバックオフィス業務のDX化推進経験</li><li><span class='tag tag-want'>WANT</span> 上場後の開示対応、IR業務の経験</li></ul><p><strong>求める人物像</strong><br>・経営視点でコーポレート部門の価値最大化を目指せる方<br>・スピード感のある環境で変化を楽しみながら仕事に取り組める方<br>・高い倫理観とコンプライアンス意識を持ち、誠実に業務遂行できる方<br>・メンバーの主体性を引き出すマネジメントができる方<br>・曖昧な状況においても自律的に課題設定、解決に動ける方</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 基本出社</span><span class="pill">✅ 副業可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://age-technologies.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://age-technologies.co.jp/2746/" target="_blank">📄 資金調達プレスリリース</a><a class="lbtn lbtn-out" href="https://speakerdeck.com/agetechinc/5de31af87fdc59eda98813f1e654eeed" target="_blank">📊 会社資料</a></div>
+</div></div>
+
+<div class="card" id="k6"><div class="card-inner">
+  <div class="badges"><span class="badge">経営推進本部長候補</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">株式会社イマクリエ</div>
+  <div class="co-url"><a href="https://www.imacrea.co.jp/" target="_blank">https://www.imacrea.co.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>東京都港区東麻布2-3-5 第一ビル2F</td></tr><tr><th>設立</th><td>2007年7月</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    テレワークを活用したアウトソーシング・地方創生事業を推進する完全リモート企業
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">株式会社イマクリエは、2007年7月に設立され、テレワークを活用したアウトソーシング事業およびコンサルティング事業を展開する企業です。「住む場所やライフステージに縛られず、一人ひとりがいきいきと働ける社会」の実現を目指している企業です。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>株式会社イマクリエは、2007年7月に設立され、テレワークを活用したアウトソーシング事業およびコンサルティング事業を展開する企業です。「住む場所やライフステージに縛られず、一人ひとりがいきいきと働ける社会」の実現を目指し、現在では日本国内44都道府県、世界40か国以上に在住する5,000名以上のテレワーカーと共に事業を推進しています。</p><p>東日本大震災を契機に「家で仕事ができるテレワーク」の重要性を実感し、社員全員がフルリモートで働く「完全テレワーク型」の事業モデルを確立。2016年には正式に全員フルリモート勤務へ移行し、テレワークに関する豊富なノウハウを蓄積してきました。この知見を活かし、企業向けのテレワーク導入支援だけでなく、自治体と連携した地方創生支援事業にも注力しています。</p><p>同社の事業は、企業の業務効率化を支援するBPO（ビジネス・プロセス・アウトソーシング）を中心に、地方自治体向けのプロモーション支援や雇用創出・企業誘致など多岐にわたります。都市部の企業と地方自治体をつなぎ、地方に眠る資産の活用を促進することで、地域経済の活性化にも貢献しています。</p><p>その取り組みが評価され、2022年度には「地方創生テレワークアワード（地方創生担当大臣賞）」および「テレワーク先駆者百選 総務大臣賞」をダブル受賞しました。今後も、テレワークを活用した新たな働き方を推進し、社会の発展に寄与していきます。</p><p><strong>代表取締役　鈴木信吾氏</strong><br>1978年生まれ。2002年に青山学院大学経営学部を卒業後、大手住宅メーカーに就職。その後、大手自動車部品メーカーを経て、コンサルティング会社にてクライアントの経営戦略立案などを担当。2007年に友人4人とともに株式会社イマクリエを創業。</p></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 経営推進本部長候補</div>
+          <div class="job-preview">経営基盤の強化と事業成長を支援し、管理体制の整備を進めつつ攻めの経営を推進</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容：</strong><br>経営推進本部長として、経営基盤の強化と事業成長を支援する役割を担います。<br>管理体制の整備を進めつつも、攻めの経営を推進することが求められています。<br>（現在の部長は在籍歴は長いが、専門性が高いわけではないとのことです。）</p><p>外部からの資金調達は行っておらず、VCや事業会社の出資もありません。<br>しかし、BPO事業の成長に伴い、新たな事業展開によっては柔軟な資金調達の選択肢も視野に入れています。</p><p><strong>・組織体制：</strong><br>　　経営推進本部<br><strong>・経営推進本部の管轄グループ：</strong><br>　　人事・広報グループ<br>　　人材開発グループ<br>　　管理グループ<br>　　コンプライアンスグループ<br><strong>・組織構成：</strong><br>　　部長1名、リーダー1名、メンバー10名</p><p><strong>求める人物像</strong><br>・ビジョンへの共感<br>・成長意欲の強い方<br>・世の中を変えるインパクトのある挑戦をしたい方<br>・失敗を恐れず、成功するまであきらめない方<br>・変化することを楽しめる方</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 フルリモート可</span><span class="pill">❓ 副業</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://www.imacrea.co.jp/" target="_blank">🏢 企業サイト</a><a class="lbtn lbtn-out" href="https://drive.google.com/file/d/1ICDK3Cv369NHsmnc_TloI9Lk3mE8D8nf/view?usp=sharing" target="_blank">📊 会社資料</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが鈴木啓友 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
